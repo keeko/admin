@@ -1,0 +1,123 @@
+{
+	"name" : "keeko/admin",
+	"description" : "Admin module",
+	"type" : "keeko-module",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "gossi"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"keeko\\admin\\" : "src/"
+		}
+	},
+	"require" : {
+		"php" : ">=5.4",
+		"keeko/composer-installer" : "*"
+	},
+	"require-dev" : {
+		"keeko/framework" : "dev-master",
+		"keeko/core" : "@dev",
+		"propel/propel" : "@alpha",
+		"puli/repository" : "@beta",
+		"puli/composer-plugin" : "@beta",
+		"puli/twig-extension" : "@beta",
+		"puli/url-generator" : "@beta",
+		"puli/discovery" : "@beta"
+	},
+	"extra" : {
+		"keeko" : {
+			"module" : {
+				"title" : "Keeko Admin",
+				"class" : "keeko\\admin\\AdminModule",
+				"extensions": {
+					"keeko.admin.menu": [
+					    {
+					        "id": "keeko.admin.dashboard",
+					        "icon": "dashboard",
+					        "label": "dashboard",
+					        "domain": "keeko.admin",
+					        "module": "keeko/admin",
+					        "action": "dashboard"
+					    },
+					    {
+					        "id": "keeko.admin.users_groups",
+					        "icon": "users",
+					        "label": "users_groups",
+					        "domain": "keeko.admin"
+					    },
+					    {
+					        "id": "keeko.admin.users",
+					        "parent": "keeko.admin.users_groups",
+					        "icon": "user",
+					        "label": "users",
+					        "domain": "keeko.admin",
+					        "module": "keeko/admin",
+					        "action": "users"
+					    },
+					    {
+					        "id": "keeko.admin.groups",
+					        "parent": "keeko.admin.users_groups",
+					        "icon": "users",
+					        "label": "groups",
+					        "domain": "keeko.admin",
+					        "module": "keeko/admin",
+					        "action": "groups"
+					    },
+					    {
+					        "id": "keeko.admin.settings",
+					        "icon": "cog",
+					        "label": "settings",
+					        "domain": "keeko.admin",
+					        "module": "keeko/admin",
+					        "action": "settings"
+					    }
+					]  
+				},
+				"actions" : {
+					"dashboard" : {
+						"title" : "Dashboard",
+						"class" : "keeko\\admin\\action\\DashboardAction",
+						"acl" : [
+							"admin"
+						],
+						"responder" : {
+							"html" : "keeko\\admin\\responder\\html\\DashboardHtmlResponder"
+						}
+					},
+					"users" : {
+						"title" : "User admin",
+						"class" : "keeko\\admin\\action\\UsersAction",
+						"acl" : [
+							"admin"
+						],
+						"responder" : {
+							"html" : "keeko\\admin\\responder\\html\\UsersHtmlResponder"
+						}
+					},
+					"groups" : {
+						"title" : "Group admin",
+						"class" : "keeko\\admin\\action\\GroupsAction",
+						"acl" : [
+							"admin"
+						],
+						"responder" : {
+							"html" : "keeko\\admin\\responder\\html\\GroupsHtmlResponder"
+						}
+					},
+					"settings" : {
+						"title" : "Settings",
+						"class" : "keeko\\admin\\action\\SettingsAction",
+						"acl" : [
+							"admin"
+						],
+						"responder" : {
+							"html" : "keeko\\admin\\responder\\html\\SettingsHtmlResponder"
+						}
+					}
+				}
+			}
+		}
+	}
+}
