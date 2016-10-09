@@ -31,49 +31,37 @@
 			"module" : {
 				"title" : "Keeko Admin",
 				"class" : "keeko\\admin\\AdminModule",
-				"extensions": {
-					"keeko.admin.menu": [
-					    {
-					        "id": "keeko.admin.dashboard",
-					        "icon": "dashboard",
-					        "label": "dashboard",
-					        "domain": "keeko.admin",
-					        "module": "keeko/admin",
-					        "action": "dashboard"
-					    },
-					    {
-					        "id": "keeko.admin.users_groups",
-					        "icon": "users",
-					        "label": "users_groups",
-					        "domain": "keeko.admin"
-					    },
-					    {
-					        "id": "keeko.admin.users",
-					        "parent": "keeko.admin.users_groups",
-					        "icon": "user",
-					        "label": "users",
-					        "domain": "keeko.admin",
-					        "module": "keeko/admin",
-					        "action": "users"
-					    },
-					    {
-					        "id": "keeko.admin.groups",
-					        "parent": "keeko.admin.users_groups",
-					        "icon": "users",
-					        "label": "groups",
-					        "domain": "keeko.admin",
-					        "module": "keeko/admin",
-					        "action": "groups"
-					    },
-					    {
-					        "id": "keeko.admin.settings",
-					        "icon": "cog",
-					        "label": "settings",
-					        "domain": "keeko.admin",
-					        "module": "keeko/admin",
-					        "action": "settings"
-					    }
-					]  
+				"extensions" : {
+					"keeko.admin.menu" : [{
+							"id" : "keeko.admin.users_groups",
+							"icon" : "users",
+							"label" : "users_groups",
+							"domain" : "keeko.admin"
+						}, {
+							"id" : "keeko.admin.users",
+							"parent" : "keeko.admin.users_groups",
+							"icon" : "user",
+							"label" : "users",
+							"domain" : "keeko.admin",
+							"module" : "keeko/admin",
+							"action" : "users"
+						}, {
+							"id" : "keeko.admin.groups",
+							"parent" : "keeko.admin.users_groups",
+							"icon" : "users",
+							"label" : "groups",
+							"domain" : "keeko.admin",
+							"module" : "keeko/admin",
+							"action" : "groups"
+						}, {
+							"id" : "keeko.admin.settings",
+							"icon" : "cog",
+							"label" : "settings",
+							"domain" : "keeko.admin",
+							"module" : "keeko/admin",
+							"action" : "settings"
+						}
+					]
 				},
 				"actions" : {
 					"dashboard" : {
