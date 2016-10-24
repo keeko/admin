@@ -1,6 +1,9 @@
 {
     "version": "1.0",
     "name": "keeko/admin",
+    "path-mappings": {
+        "/keeko/admin": "res/"
+    },
     "config": {
         "bootstrap-file": "vendor/autoload.php"
     },

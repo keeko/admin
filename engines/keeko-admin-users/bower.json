@@ -1,0 +1,9 @@
+{
+  "name": "keeko-admin-users",
+  "dependencies": {
+    "ember": "~2.8.0",
+    "ember-cli-shims": "0.1.1",
+    "font-awesome": "^4.6.3",
+    "bootstrap": "v4.0.0-alpha.5"
+  }
+}

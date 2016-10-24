@@ -1,0 +1,8 @@
+{{#keeko-dev brand="Keeko User Admin"}}
+<h1>{{#link-to "application"}}{{t 'users'}}{{/link-to}}</h1>
+{{#if (can "paginate core.user")}}
+{{outlet}}
+{{else}}
+Permission Denied.
+{{/if}}
+{{/keeko-dev}}

@@ -1,0 +1,78 @@
+<form {{action "save" on="submit"}}>
+	{{#if (not-eq systemPreferences.userLogin systemPreferences.LOGIN_EMAIL)}}
+	<div class="form-group">
+        <label for="user_name">{{ t 'user_name' }}</label>
+        {{input class="form-control" id="user_name" value=user.userName disabled=(not user.isNew) required=user.isNew}}
+    </div>
+	{{/if}}
+
+	{{#if (not-eq systemPreferences.userNames systemPreferences.VALUE_NONE)}}
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="given_name">{{ t 'given_name' }}</label>
+            {{input class="form-control" id="given_name" value=user.givenName required=(eq systemPreferences.userNames systemPreferences.VALUE_REQUIRED)}}
+        </div>
+        <div class="form-group col-md-6">
+            <label for="family_name">{{ t 'family_name' }}</label>
+            {{input class="form-control" id="family_name" value=user.familyName required=(eq systemPreferences.userNames systemPreferences.VALUE_REQUIRED)}}
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if systemPreferences.userNickname}}
+    <div class="form-group">
+        <label for="nick_name">{{ t 'nick_name' }}</label>
+        {{input class="form-control" id="nick_name" value=user.nickName required=true}}
+    </div>
+    {{/if}}
+
+    {{#if (eq systemPreferences.userDisplayName systemPreferences.DISPLAY_USERSELECT) }}
+    <div class="form-group">
+        <label for="display_name">{{ t 'display_name' }}</label>
+        <select class="form-control" id="display_name" required>
+
+        </select>
+    </div>
+    {{/if}}
+
+	{{#if (or (not-eq systemPreferences.userBirth systemPreferences.VALUE_NONE) (not-eq systemPreferences.userSex systemPreferences.VALUE_NONE)) }}
+	<div class="row">
+
+		{{#if (not-eq systemPreferences.userBirth systemPreferences.VALUE_NONE)}}
+		<div class="form-group col-md-6">
+			<label for="birth">{{ t 'birth' }}</label>
+			{{input type="date" class="form-control" id="birth" placeholder=(t 'birth_placeholder') value=user.birthday required=(eq systemPreferences.userBirth systemPreferences.VALUE_REQUIRED)}}
+		</div>
+		{{/if}}
+		{{#if (not-eq systemPreferences.userSex systemPreferences.VALUE_NONE)}}
+		<div class="form-group col-md-6">
+			<label>{{ t 'sex' }}</label>
+
+			<div class="form-control-static">
+			<label class="form-check-inline">
+				{{input type="radio" class="form-check-input" value="0" checked=(eq user.sex 0) required=(eq systemPreferences.userSex systemPreferences.VALUE_REQUIRED)}} {{ t 'female' }}
+			</label>
+			<label class="form-check-inline">
+				{{input type="radio" class="form-check-input" value="1" checked=(eq user.sex 1) required=(eq systemPreferences.userSex systemPreferences.VALUE_REQUIRED)}} {{ t 'male' }}
+			</label>
+			</div>
+		</div>
+		{{/if}}
+
+	</div>
+	{{/if}}
+
+	<div class="form-group">
+		<label for="email">{{ t 'email' }}</label>
+		{{input type="email" class="form-control" id="email" value=user.email required=(eq systemPreferences.userEmail systemPreferences.VALUE_REQUIRED)}}
+	</div>
+
+	{{#if user.isNew}}
+	<div class="form-group">
+		<label for="password">{{ t 'password' }}</label>
+		{{input type="password" class="form-control" id="password" value=user.password required=true}}
+	</div>
+	{{/if}}
+
+	<button type="submit" class="btn btn-success">{{ t 'save' }}</button>
+</form>

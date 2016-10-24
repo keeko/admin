@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-9">
+		{{keeko-admin-table data=model columns=columns}}
+	</div>
+	<div class="col-md-3">
+		{{#link-to "new" class="btn btn-primary"}}{{t 'new'}} {{t 'user'}}{{/link-to}}
+
+		<div class="list-group">
+			<div class="list-group-item">
+				<h5 class="list-group-item-heading">Filter by Groups</h5>
+			</div>
+			{{#each groups as |group|}}
+			{{#if (not group.isGuest)}}
+			<button type="button" class="list-group-item list-group-item-action {{if (eq filter group) 'active'}}" {{action 'filter' group}}>
+				<span class="tag tag-default tag-pill float-xs-right">12</span>
+				{{group.name}}
+			</button>
+			{{/if}}
+			{{/each}}
+		</div>
+	</div>
+</div>

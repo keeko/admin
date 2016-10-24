@@ -1,0 +1,11 @@
+<p>{{t 'memberships'}}:</p>
+
+<p>
+{{#each groups as |group|}}
+{{#if (not group.isGuest)}}
+<label>
+{{input type="checkbox" checked=(contains group model.groups) disabled=group.isGuest change=(action 'changeGroup' group)}}
+{{group.name}}</label><br>
+{{/if}}
+{{/each}}
+</p>

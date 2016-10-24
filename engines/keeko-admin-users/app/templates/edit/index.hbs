@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-9">
+		{{user-form user=model}}
+	</div>
+	<div class="col-md-3">
+		<dl>
+			<dt>Created</dt>
+			<dd>{{moment-format model.createdAt}}</dd>
+			<dt>Updated</dt>
+			<dd>{{model.updatedAt}}</dd>
+			<dt>Groups</dt>
+			<dd>
+				<ul class="list-unstyled">
+					{{#each model.groups as |group|}}
+					<li>{{group.name}}</li>
+					{{/each}}
+				</ul>
+			</dd>
+		</dl>
+	</div>
+</div>

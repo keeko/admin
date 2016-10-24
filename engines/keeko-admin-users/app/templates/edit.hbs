@@ -1,0 +1,11 @@
+<h2>{{t 'edit'}} {{t 'user'}}</h2>
+
+<ul class="nav nav-tabs">
+	{{#each nav as |item|}}
+	<li class="nav-item {{if item.active 'active'}}">{{#link-to item.route class="nav-link"}}{{item.title}}{{/link-to}}</li>
+	{{/each}}
+</ul>
+
+<div style="margin-top: 10px;">
+	{{outlet}}	
+</div>
